@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+           
+        }
+
+  
+        input {
+            margin-top: 20px;
+            width: 200px; 
+            height: 30px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px;
+            background-color: black;
+            color: white;
+            font-weight: bolder;
+        }
+
+        .ans {
+            margin-top: 30px;
+            font-weight: bolder;
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            padding: 20px;
+            display: none;
+            font-size: 20px;
+        }
+        #msg{
+            margin-top: 20px; font-weight: bolder; 
+        }
+    </style>
+</head>
+<body>
+  
+
+<center>
+    <h2 >PERCENTAGE AND GRADE CALCULATOR</h2>
+    <div class="per">
+        <input type="number" PLACEHOLDER="Total Number" id="total"><br>
+        <input type="number" PLACEHOLDER="Given Number" id="given"><br>
+        <button onclick="cal()">CALCULATE</button>
+    </div>
+
+    <span class="ans">
+        <div id="perc"></div>
+        <div id="grade"></div>
+    </span>
+    <div id="msg"></div>
+</center>
+
+<script>
+  
+    function cal() {
+        var total = document.getElementById("total").value;
+        var given = document.getElementById("given").value;
+        var ans = document.querySelector(".ans");
+        var alert = document.getElementById("msg");
+
+        if (total && given) {
+            ans.style.display = "block";
+            alert.style.display = "none";
+
+            var result = (given / total * 100).toFixed(2);
+            var per = document.getElementById("perc");
+            per.innerHTML = "YOUR PERCENTAGE IS " + result + "%";
+            var grade = document.getElementById("grade");
+
+            if (result >= 80) {
+                grade.innerHTML = "YOUR GRADE IS A+";
+            } else if (result >= 70) {
+                grade.innerHTML = "YOUR GRADE IS A";
+            } else if (result >= 60) {
+                grade.innerHTML = "YOUR GRADE IS B";
+            } else if (result >= 50) {
+                grade.innerHTML = "YOUR GRADE IS C";
+            } else if (result >= 40) {
+                grade.innerHTML = "YOUR GRADE IS D";
+            } else if (result >= 30) {
+                grade.innerHTML = "YOUR GRADE IS E";
+            } else {
+                grade.innerHTML = "YOUR GRADE IS F";
+            }
+        } else {
+            alert.innerHTML = "Please enter both total and given numbers.";
+        }
+    }
+
+
+</script>
+</body>
+</html>
